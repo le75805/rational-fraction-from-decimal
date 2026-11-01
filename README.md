@@ -26,3 +26,10 @@ The trade-off: the result is the best single fraction under the bound, not a fra
 - A `maxDenominator` of `1` forces integer rounding: `2.7` becomes `3/1`.
 
 The algorithm relies on floating-point arithmetic, so for decimals that are not exactly representable (such as `0.1`) the approximation tracks the double actually stored, not the decimal literal you typed. This is rarely visible at modest bounds but is the reason `fromDecimal(0.1, 100)` returns `1/10` only because `1/10` is the convergent closest to the stored double.
+
+## Design notes
+
+The window stores values eagerly rather than keeping running aggregates. Running
+sums drift with floating point over long streams, and recomputing from a small
+buffer is cheap enough that the drift is not worth the speed.
+
