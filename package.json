@@ -1,6 +1,6 @@
 {
   "name": "rational-fraction-from-decimal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Computes the closest fraction to a given decimal by bounding the denominator via continued fractions.",
   "type": "module",
   "main": "src/index.js",
